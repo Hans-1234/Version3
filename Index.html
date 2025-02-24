@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KüstenSaft Manufaktur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('hintergrundbild.jpg') no-repeat center center/cover;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+        }
+        .produkt img {
+            width: 45%;
+            margin: 5px;
+            border-radius: 10px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        h2 {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <h1>KüstenSaft Manufaktur</h1>
+    <p>Frischer handgemachter Apfelsaft direkt von der Streuobstwiese – 100% Naturtrüb, ohne Zusatzstoffe.</p>
+    
+    <div class="container">
+        <div class="produkt">
+            <h2>Frischer KüstenSaft 5L</h2>
+            <img src="apfelsaft5l_1.jpg" alt="Frischer KüstenSaft 5L">
+            <img src="apfelsaft5l_2.jpg" alt="Frischer KüstenSaft 5L">
+            <p><strong>Preis: 13,00€</strong> (zzgl. Versand)</p>
+            <p>Haltbar bis 01.09.2026</p>
+            <h3>Bestellung aufgeben</h3>
+            <form id="bestellForm5L">
+                <input type="text" id="name5L" placeholder="Ihr Name" required>
+                <input type="email" id="email5L" placeholder="Ihre E-Mail" required>
+                <input type="text" id="adresse5L" placeholder="Ihre Adresse" required>
+                <input type="number" id="menge5L" placeholder="Menge" min="1" required>
+                <button type="submit">Jetzt bestellen</button>
+            </form>
+        </div>
+        <br>
+        <div class="produkt">
+            <h2>Frischer KüstenSaft 3L</h2>
+            <img src="apfelsaft3l_1.jpg" alt="Frischer KüstenSaft 3L">
+            <img src="apfelsaft3l_2.jpg" alt="Frischer KüstenSaft 3L">
+            <p><strong>Preis: 9,00€</strong> (zzgl. Versand)</p>
+            <p>Haltbar bis 01.09.2026</p>
+            <h3>Bestellung aufgeben</h3>
+            <form id="bestellForm3L">
+                <input type="text" id="name3L" placeholder="Ihr Name" required>
+                <input type="email" id="email3L" placeholder="Ihre E-Mail" required>
+                <input type="text" id="adresse3L" placeholder="Ihre Adresse" required>
+                <input type="number" id="menge3L" placeholder="Menge" min="1" required>
+                <button type="submit">Jetzt bestellen</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function bestellungSenden(formId, nameId, emailId, adresseId, mengeId) {
+            document.getElementById(formId).onsubmit = function(event) {
+                event.preventDefault();
+                let name = document.getElementById(nameId).value;
+                let email = document.getElementById(emailId).value;
+                let adresse = document.getElementById(adresseId).value;
+                let menge = document.getElementById(mengeId).value;
+                
+                let mailtoLink = `mailto:apfelsaf-kngpg@gmx.net?subject=Bestellung%20Apfelsaft&body=
+                    Name: ${name}%0D%0A
+                    E-Mail: ${email}%0D%0A
+                    Adresse: ${adresse}%0D%0A
+                    Menge: ${menge}x Apfelsaft%0D%0A
+                `;
+                
+                window.location.href = mailtoLink;
+            };
+        }
+        
+        bestellungSenden("bestellForm5L", "name5L", "email5L", "adresse5L", "menge5L");
+        bestellungSenden("bestellForm3L", "name3L", "email3L", "adresse3L", "menge3L");
+    </script>
+</body>
+</html>
